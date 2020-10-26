@@ -32,7 +32,7 @@ namespace UWP_FileStorage
     {
        
         public PersonViewModel ViewModel { get; set; }
-        private CustomerViewModel customerViewModel { get; set; }
+        //private CustomerViewModel customerViewModel { get; set; }
 
 
         public MainPage() //kan vara GetFile(), ReadFile()
@@ -52,23 +52,25 @@ namespace UWP_FileStorage
         }
 
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        //private void btnCreate_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //  WriteTextToFileAsync().GetAwaiter();
+        //}
+
+
+
+        private async void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //  WriteTextToFileAsync().GetAwaiter();
-        }
-
-
-
-        private async void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
-            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            var picker = new FileOpenPicker
+            {
+                ViewMode = PickerViewMode.Thumbnail,
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
             picker.FileTypeFilter.Add(".txt");
             picker.FileTypeFilter.Add(".json");
             picker.FileTypeFilter.Add(".xml");
             picker.FileTypeFilter.Add(".csv");
-            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+            StorageFile file = await picker.PickSingleFileAsync();
             if (file != null)
             {
                 // Application now has read/write access to the picked file
@@ -80,33 +82,30 @@ namespace UWP_FileStorage
             }
         }
 
-        //private void btnDelete_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var context = ((FrameworkElement)sender).DataContext;
-        //    (DataContext as TextBlock)?.RemoveHandler( TappedEvent,context); 
-        //                                                 // (DataContext as PersonViewModel)?.RemoveItem((Person)context);// ++removeItem  f.i PersonVM
-        //}       
-
-        private void btnJson_Click(object sender, RoutedEventArgs e)
+       
+        private void BtnJson_Click(object sender, RoutedEventArgs e)
         {
             GetFileContentAsync("t.json").GetAwaiter();
         }
 
-        private async void btnCSV_Click(object sender, RoutedEventArgs e)
+        private async void BtnCSV_Click(object sender, RoutedEventArgs e)
         {
             //GetFileContentAsync("text upp1.csv").GetAwaiter();
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
-            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+
+            var picker = new FileOpenPicker
+            {
+                ViewMode = PickerViewMode.Thumbnail,
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
+            };
 
             picker.FileTypeFilter.Add(".csv");
-            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+            StorageFile file = await picker.PickSingleFileAsync();
             if (file != null)
             {
                 string[] lines = File.ReadAllLines(file.Path);
                 for (int i = 1; i < lines.Count(); i++)
                 {
-                    string[] data2 = lines[i].Split(';');
+                    _ = lines[i].Split(';');
                 }
             }
             else
@@ -115,11 +114,17 @@ namespace UWP_FileStorage
             }
         }
 
-        private void btnAddPersons_Click(object sender, RoutedEventArgs e)
+        private void BtnAddPersons_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(PersonView));
         }
-
+        
+        //private void btnDelete_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var context = ((FrameworkElement)sender).DataContext;
+        //    (DataContext as TextBlock)?.RemoveHandler( TappedEvent,context); 
+        //                                                 // (DataContext as PersonViewModel)?.RemoveItem((Person)context);// ++removeItem  f.i PersonVM
+        //}       
     }
 
 }

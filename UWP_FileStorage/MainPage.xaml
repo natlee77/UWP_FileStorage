@@ -26,10 +26,10 @@
 
         <StackPanel Margin="10" Grid.Column="0"  Background="#FF7A7A61">
 
-            <Button x:Name="btnCSV" Click="btnCSV_Click" Content="CSV fill"  Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Stretch" FontSize="22"/>
-            <Button x:Name="btnJson" Click="btnJson_Click" Content="Json fill"  Grid.Row="0" Margin="10,10,10,10" HorizontalAlignment="Stretch" FontSize="22" />
-            <Button x:Name="btnAddFill"  Click="btnAdd_Click"  Content="Open any file" Grid.Row="2" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="22" />
-            <Button x:Name="btnAddPersons" Click="btnAddPersons_Click"  Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Stretch" Content="Add Persons" FontSize="22"/>
+            <Button x:Name="btnCSV" Click="BtnCSV_Click" Content="CSV fill"  Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Stretch" FontSize="22"/>
+            <Button x:Name="btnJson" Click="BtnJson_Click" Content="Json fill"  Grid.Row="0" Margin="10,10,10,10" HorizontalAlignment="Stretch" FontSize="22" />
+            <Button x:Name="btnAddFill"  Click="BtnAdd_Click"  Content="Open any file" Grid.Row="2" Margin="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="22" />
+            <Button x:Name="btnAddPersons" Click="BtnAddPersons_Click"  Grid.Row="1" Margin="10,10,10,10" HorizontalAlignment="Stretch" Content="Add Persons" FontSize="22"/>
         </StackPanel>
 
 

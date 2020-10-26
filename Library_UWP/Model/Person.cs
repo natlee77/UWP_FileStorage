@@ -41,18 +41,7 @@ namespace Library_UWP.Model
 
     //++ VM for main.xaml
 
-    public class CustomerViewModel
-    {
-        public ObservableCollection<Person> Customers { get; set; }//--list
-
-        //populera direct /instället göra hämtning 
-        //public CustomerViewModel(string fileName)
-        //{
-        //    Customers = new ObservableCollection<Person>(); //ny instance /i den ++ info
-        //    Customers = JsonConvert.DeserializeObject<ObservableCollection<Person>>(FileHelper.GetFileContentAsync(fileName).GetAwaiter().GetResult());//ge lista med people type customer
-        //}
-
-    }
+   
     public class PersonViewModel
     {//view model använda att hämta ut och visa saker// vi vill ha  lista 
      //lista - kan använda
@@ -76,6 +65,18 @@ namespace Library_UWP.Model
         }
     } //=> till grafiska mainpage
 
+    public class CustomerViewModel
+    {
+        public ObservableCollection<Person> Customers { get; set; }//--list
+
+        //populera direct /instället göra hämtning 
+        //public CustomerViewModel(string fileName)
+        //{
+        //    Customers = new ObservableCollection<Person>(); //ny instance /i den ++ info
+        //    Customers = JsonConvert.DeserializeObject<ObservableCollection<Person>>(FileHelper.GetFileContentAsync(fileName).GetAwaiter().GetResult());//ge lista med people type customer
+        //}
+
+    }
 }  /*vi ska bygga MVVM  view model utav det 
         * --finns:
         * MVC -- ASP.net--model view Controler,
